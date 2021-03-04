@@ -11,7 +11,7 @@ namespace FriendLetter
     public Startup(IWebHostEnvironment env)
     {
       var builder = new ConfigurationBuilder()
-        .SetBaseaPath(env.ContentRootPath)
+        .SetBasePath(env.ContentRootPath)
         .AddEnvironmentVariables();
       Configuration = builder.Build();
     }
@@ -25,6 +25,8 @@ namespace FriendLetter
 
     public void Configure(IApplicationBuilder app)
     {
+      app.UseDeveloperExceptionPage(); //new line of code, this provides more detailed error message when a Razor page fails to load.
+
       app.UseRouting();
 
       app.UseEndpoints(routes =>
